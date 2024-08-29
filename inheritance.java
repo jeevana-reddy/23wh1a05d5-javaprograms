@@ -1,18 +1,14 @@
-package programms;
-class employee{
-	int salary = 45600;
+package Programs;
+class inheritance {
+	int salary = 60000;
 }
-class engineer extends employee{
-	int bonus = 8765;
+class Engineer extends inheritance {
+	int bonus = 10000;
 }
-
-public class inheritance {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		engineer obj = new engineer();
-		System.out.println("salary: " + obj.salary + "\nBONUS:" + obj.bonus);
-
+class Test{
+	public static void main(String[]args)
+	{
+		Engineer e1 = new Engineer();
+		System.out.println("Salary"+e1.salary+"\n bonus"+e1.bonus);
 	}
-
 }
