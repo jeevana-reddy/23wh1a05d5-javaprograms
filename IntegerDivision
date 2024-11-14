@@ -1,0 +1,61 @@
+package javaprograms;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class IntegerDivision extends JFrame implements ActionListener {
+    private JTextField num1Field, num2Field, resultField;
+    private JButton divideButton;
+
+    public IntegerDivision() {
+        setTitle("Integer Division");
+        setSize(400, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(4, 2, 10, 10));
+
+        // Labels and Text Fields
+        add(new JLabel("Num1:"));
+        num1Field = new JTextField();
+        add(num1Field);
+
+        add(new JLabel("Num2:"));
+        num2Field = new JTextField();
+        add(num2Field);
+
+        add(new JLabel("Result:"));
+        resultField = new JTextField();
+        resultField.setEditable(false);
+        add(resultField);
+
+        // Divide Button
+        divideButton = new JButton("Divide");
+        divideButton.addActionListener(this);
+        add(divideButton);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        try {
+            // Parse inputs
+            int num1 = Integer.parseInt(num1Field.getText());
+            int num2 = Integer.parseInt(num2Field.getText());
+
+            // Perform division and display result
+            int result = num1 / num2;
+            resultField.setText(String.valueOf(result));
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please enter valid integers for Num1 and Num2.", "Number Format Exception", JOptionPane.ERROR_MESSAGE);
+        } catch (ArithmeticException ex) {
+            JOptionPane.showMessageDialog(this, "Cannot divide by zero. Please enter a non-zero integer for Num2.", "Arithmetic Exception", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            IntegerDivision frame = new IntegerDivision();
+            frame.setVisible(true);
+        });
+    }
+}
